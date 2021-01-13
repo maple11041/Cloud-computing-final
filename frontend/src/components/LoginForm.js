@@ -45,7 +45,8 @@ const LoginForm = () => {
     };
 
     if (ifToken) {
-        return <Redirect to="/home" />;
+        // window.location.reload(false);
+        return <Redirect to="/upload" />;
     }
     return (
         <div className="login-form">
