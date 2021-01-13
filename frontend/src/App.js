@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "./components/NavBar";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
@@ -9,12 +9,17 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
+    const [token, setToken] = useState("");
     return (
         <Router>
             <>
-                <NavBar />
+                <NavBar token={token} />
                 <Switch>
-                    <Route path="/" exact component={LoginForm} />
+                    <Route
+                        path="/"
+                        exact
+                        component={() => <LoginForm setToken={setToken} />}
+                    />
                     <Route path="/signup" component={SignUpForm} />
                     <Route path="/upload" component={ImageUpload} />
                     <Route path="/GanUpload" component={GanUpload} />
