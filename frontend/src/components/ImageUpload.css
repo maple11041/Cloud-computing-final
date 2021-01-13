@@ -1,0 +1,19 @@
+.header-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+.upload-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.upload-btn > button {
+    margin: 5% 5%;
+}
+
+.spinner-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+}
