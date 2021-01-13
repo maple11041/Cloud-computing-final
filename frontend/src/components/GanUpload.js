@@ -6,7 +6,7 @@ import Result from "./Result";
 import Spin from "./Spin";
 import "./ImageUpload.css";
 
-const ImageUpload = (props) => {
+const GanUpload = (props) => {
     const API_URL = "http://localhost:5000";
     const [pictures, setPictures] = useState([]);
     const [status, setStatus] = useState("Upload");
@@ -16,9 +16,7 @@ const ImageUpload = (props) => {
         setPictures([...pictures, picture]);
         // console.log(picture);
     };
-
     const upload = async (style) => {
-        // console.log("test");
         console.log(style);
         // console.log(pictures[0][0].name);
         // history.push("/result");
@@ -26,12 +24,12 @@ const ImageUpload = (props) => {
             let formData = new FormData();
             formData.append("file", pictures[0][0]);
             formData.append("filename", pictures[0][0].name);
-            formData.append("style", style);
+            formData.append("style", style.toString());
             // console.log(pictures[0]);]
             // console.log("bbbbb");
             setStatus("Loading");
             const response = await axios.post(
-                `${API_URL}/api/image/upload`,
+                `${API_URL}/api/image/GanUpload`,
                 formData
             );
             // console.log(response.data);
@@ -55,7 +53,7 @@ const ImageUpload = (props) => {
     };
     return status === "Upload" ? (
         <div className="upload-wrapper">
-            <h1 className="header-wrapper">Style Transfer</h1>
+            <h1 className="header-wrapper">GAN Style Transfer</h1>
             <ImageUploader
                 {...props}
                 withIcon={true}
@@ -65,18 +63,21 @@ const ImageUpload = (props) => {
                 withPreview={true}
             />
             <div className="upload-btn">
-                <Button onClick={upload}>Mosiac</Button>
-                <Button variant="secondary" onClick={upload}>
-                    Contract
+                <Button onClick={() => upload(0)}>WAVE</Button>
+                <Button onClick={() => upload(1)} variant="secondary">
+                    LA Muse
                 </Button>
-                <Button variant="success" onClick={upload}>
-                    Sharpen
+                <Button onClick={() => upload(2)} variant="success">
+                    Rain Princess
                 </Button>
-                <Button variant="warning" onClick={upload}>
-                    Inverse
+                <Button onClick={() => upload(3)} variant="warning">
+                    The Scream
                 </Button>
-                <Button onClick={() => upload("for-text")} variant="danger">
-                    Signature
+                <Button onClick={() => upload(4)} variant="danger">
+                    Udnie
+                </Button>
+                <Button onClick={() => upload(5)} variant="info">
+                    Minotaur
                 </Button>
             </div>
         </div>
@@ -87,4 +88,4 @@ const ImageUpload = (props) => {
     );
 };
 
-export default ImageUpload;
+export default GanUpload;

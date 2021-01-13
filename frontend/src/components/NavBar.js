@@ -13,6 +13,7 @@ const NavBar = () => {
     };
     // switch text for link
     const inOut = ifToken ? "Login" : "Logout";
+    console.log(inOut);
     return (
         <Navbar bg="light" expand="lg">
             <Navbar.Brand href="/home">Cloud Computing</Navbar.Brand>
@@ -20,10 +21,14 @@ const NavBar = () => {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                     <Nav.Link href="/home">Home</Nav.Link>
+                    <Nav.Link href="/upload">Upload</Nav.Link>
+                    <Nav.Link href="/GanUpload">GAN</Nav.Link>{" "}
                     <Nav.Link href="/" onClick={logout}>
                         {inOut}
                     </Nav.Link>
-                    <Nav.Link href="/signup">Sign Up</Nav.Link>
+                    {ifToken ? (
+                        <Nav.Link href="/signup">Sign Up</Nav.Link>
+                    ) : null}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
