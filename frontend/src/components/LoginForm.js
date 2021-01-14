@@ -6,7 +6,7 @@ import "./LoginForm.css";
 
 const API_URL = "http://localhost:5000";
 
-const LoginForm = () => {
+const LoginForm = ({ setToken }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [warning, setWarning] = useState("");
@@ -25,6 +25,7 @@ const LoginForm = () => {
             if (response.data.success) {
                 localStorage.setItem("token", response.data.token);
                 setIfToken(true);
+                setToken(response.data.token);
             } else {
                 setWarning(response.data.message);
             }

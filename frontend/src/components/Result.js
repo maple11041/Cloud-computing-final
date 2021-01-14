@@ -7,6 +7,7 @@ const Result = ({ imageSrc }) => {
     return (
         <div className="image-wrapper">
             <img src={`data:image/jpg;base64,${imageSrc}`} />
+            <img src={`data:image/jpg;base64,${imageSrc}`} />
         </div>
     );
 };
