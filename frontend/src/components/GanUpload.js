@@ -62,24 +62,31 @@ const GanUpload = (props) => {
                 maxFileSize={5242880}
                 withPreview={true}
             />
-            <div className="upload-btn">
-                <Button onClick={() => upload(0)}>WAVE</Button>
-                <Button onClick={() => upload(1)} variant="secondary">
-                    LA Muse
-                </Button>
-                <Button onClick={() => upload(2)} variant="success">
-                    Rain Princess
-                </Button>
-                <Button onClick={() => upload(3)} variant="warning">
-                    The Scream
-                </Button>
-                <Button onClick={() => upload(4)} variant="danger">
-                    Udnie
-                </Button>
-                <Button onClick={() => upload(5)} variant="info">
-                    Minotaur
-                </Button>
-            </div>
+            {pictures.length !== 0 ? (
+                <>
+                    <h2 className="header-wrapper">
+                        Please choose the GAN style you want to transfer
+                    </h2>
+                    <div className="upload-btn">
+                        <Button onClick={() => upload(0)}>WAVE</Button>
+                        <Button onClick={() => upload(1)} variant="secondary">
+                            LA Muse
+                        </Button>
+                        <Button onClick={() => upload(2)} variant="success">
+                            Rain Princess
+                        </Button>
+                        <Button onClick={() => upload(3)} variant="warning">
+                            The Scream
+                        </Button>
+                        <Button onClick={() => upload(4)} variant="danger">
+                            Udnie
+                        </Button>
+                        <Button onClick={() => upload(5)} variant="info">
+                            Minotaur
+                        </Button>
+                    </div>
+                </>
+            ) : null}
         </div>
     ) : status === "Loading" ? (
         <Spin />

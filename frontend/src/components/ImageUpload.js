@@ -64,24 +64,42 @@ const ImageUpload = (props) => {
                 maxFileSize={5242880}
                 withPreview={true}
             />
-            <div className="upload-btn">
-                <Button onClick={() => upload("for-mosaic")}>Mosiac</Button>
-                <Button
-                    variant="secondary"
-                    onClick={() => upload("for-contract")}
-                >
-                    Contract
-                </Button>
-                <Button variant="success" onClick={() => upload("for-sharp")}>
-                    Sharpen
-                </Button>
-                <Button variant="warning" onClick={() => upload("for-inv")}>
-                    Inverse
-                </Button>
-                <Button onClick={() => upload("for-text")} variant="danger">
-                    Signature
-                </Button>
-            </div>
+            {pictures.length !== 0 ? (
+                <>
+                    <h2 className="header-wrapper">
+                        Please choose the style you want to transfer
+                    </h2>
+                    <div className="upload-btn">
+                        <Button onClick={() => upload("for-mosaic")}>
+                            Mosiac
+                        </Button>
+                        <Button
+                            variant="secondary"
+                            onClick={() => upload("for-contract")}
+                        >
+                            Contract
+                        </Button>
+                        <Button
+                            variant="success"
+                            onClick={() => upload("for-sharp")}
+                        >
+                            Sharpen
+                        </Button>
+                        <Button
+                            variant="warning"
+                            onClick={() => upload("for-inv")}
+                        >
+                            Inverse
+                        </Button>
+                        <Button
+                            onClick={() => upload("for-text")}
+                            variant="danger"
+                        >
+                            Signature
+                        </Button>
+                    </div>
+                </>
+            ) : null}
         </div>
     ) : status === "Loading" ? (
         <Spin />
