@@ -23,3 +23,9 @@ yarn-debug.log*
 yarn-error.log*
 
 web_flask/
+
+backend/image/*.jpg
+backend/image/*.png
+backend/transfered/*.jpg
+backend/transfered/*.png
+backend/download/*.png

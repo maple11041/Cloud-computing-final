@@ -123,11 +123,14 @@ def upload_image():
         'success': False,
         'message': ''
     }
+    bucket_dict = {"for-contract": "for-contract-texture-texture", "for-inv": "for-inv-texture-texture",
+                   "for-mosaic": "for-mosaic-resized-texture", "for-sharp": "for-sharp-texture-texture", "for-text": "for-text-texture"}
     try:
         if request.method == 'POST':
             file = request.files['file']
             # print(file)
             style = request.form.get("style")
+            new_bucket = bucket_dict[style]
             filename = secure_filename(file.filename)
             print(style)
             ext = filename.split(".")[-1]
@@ -138,7 +141,7 @@ def upload_image():
             time.sleep(10)
             image_path = os.path.join("download", hash_file) + ".png"
             download_aws_lambda(
-                path=image_path, new_key=hash_file+".png", new_bucket=style+"-texture")
+                path=image_path, new_key=hash_file+".png", new_bucket=new_bucket)
             # image_path = upload_dl_transfer(destination, style=style)
             # image_path = "./transfered/wave__859dda68-995f-42c6-97e4-ab8434fba796.jpg"
 

@@ -65,14 +65,17 @@ const ImageUpload = (props) => {
                 withPreview={true}
             />
             <div className="upload-btn">
-                <Button onClick={upload}>Mosiac</Button>
-                <Button variant="secondary" onClick={upload}>
+                <Button onClick={() => upload("for-mosaic")}>Mosiac</Button>
+                <Button
+                    variant="secondary"
+                    onClick={() => upload("for-contract")}
+                >
                     Contract
                 </Button>
-                <Button variant="success" onClick={upload}>
+                <Button variant="success" onClick={() => upload("for-sharp")}>
                     Sharpen
                 </Button>
-                <Button variant="warning" onClick={upload}>
+                <Button variant="warning" onClick={() => upload("for-inv")}>
                     Inverse
                 </Button>
                 <Button onClick={() => upload("for-text")} variant="danger">
